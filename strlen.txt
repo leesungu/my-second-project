@@ -1,0 +1,38 @@
+public static unsafe int strlen(string s) 
+{
+    if(s == null) {
+        // Handle the error here
+    }
+
+    int length = 0;
+
+    fixed(char *pStr = s) {
+        length = *(((int *)pStr) - 1);
+    }
+
+    return length;
+}
+
+public static unsafe int strlen(string s) 
+{
+    if(s == null) {
+        // Handle the error here
+    }
+
+    int length = 0;
+
+    fixed(char *pStr = s) {
+        char *pEnd   = pStr;    
+        while(*pEnd++ != '\0'); 
+        length = (int)((pEnd - pStr) - 1);            
+    }
+
+    return length;
+}
+
+
+public static int strlen2 (string s) {
+    int length = 0;
+    foreach (char c in s) length++;
+    return length
+}
